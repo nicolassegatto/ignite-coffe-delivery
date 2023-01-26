@@ -1,6 +1,6 @@
-import { ShoppingCart, Timer, Package, Coffee, Minus, Plus, Trash } from "phosphor-react";
+import { ShoppingCart, Timer, Package, Coffee, Minus, Plus, Trash, MapPin, CurrencyDollar } from "phosphor-react";
 import { defaultTheme } from "../../styles/themes/default";
-import { ButtonCheckoutContent, CartBallStyle, CartButtonStyle, CoffeBallStyle, ItensSelector, PackageBallStyle, RemoveButtonCart, TimerBallStyle } from "./styled";
+import { ButtonCheckoutContent, CartBallStyle, CartButtonStyle, CoffeBallStyle, ItensSelector, MapPinBallStyle, MoneyBallStyle, PackageBallStyle, RemoveButtonCart, TimerBallStyle } from "./styled";
 
 interface CartButtonColorType {
   backgroundColor: keyof typeof defaultTheme
@@ -44,6 +44,22 @@ export function CoffeBall() {
     <CoffeBallStyle>
       <Coffee size={16} weight="fill" />
     </CoffeBallStyle>
+  )
+}
+
+export function MapPinBall() {
+  return (
+    <MapPinBallStyle>
+      <MapPin size={16} weight="fill" />
+    </MapPinBallStyle>
+  )
+}
+
+export function MoneyBall() {
+  return (
+    <MoneyBallStyle>
+      <CurrencyDollar size={16} weight="fill" />
+    </MoneyBallStyle>
   )
 }
 

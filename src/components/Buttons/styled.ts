@@ -79,6 +79,34 @@ export const CoffeBallStyle = styled.div`
   align-items: center;
 `
 
+export const MapPinBallStyle = styled.div`
+  background-color: ${(props) => props.theme['purple-500']};
+  color: ${(props) => props.theme['gray-0']};
+  border-radius: 50%;
+  min-width: 2rem;
+  min-height: 2rem;
+  max-width: 2rem;
+  max-height: 2rem;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+`
+
+export const MoneyBallStyle = styled.div`
+  background-color: ${(props) => props.theme['yellow-700']};
+  color: ${(props) => props.theme['gray-0']};
+  border-radius: 50%;
+  min-width: 2rem;
+  min-height: 2rem;
+  max-width: 2rem;
+  max-height: 2rem;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+`
+
 export const ItensSelector = styled.div`
   display: flex;
   justify-content: center;

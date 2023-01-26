@@ -1,9 +1,20 @@
 import { Bank, CreditCard, CurrencyDollar, MapPinLine, Money } from "phosphor-react";
+import { useNavigate } from "react-router-dom";
 import { ButtonCheckout, ItensQTDController, RemoveButton } from "../../components/Buttons";
 import { defaultTheme } from "../../styles/themes/default";
 import { AddressPaymentContainer, AddressPaymentDelivery, AddressPaymentDeliveryForm, AddressPaymentDeliveryTitle, AddressPaymentMethod, AddressPaymentMethodForm, AddressPaymentMethodTitle, AddressPaymentTitle, BagCheckoutCard, BagCheckoutContainer, BagCheckoutItem, BagCheckoutItemControllers, BagCheckoutItemControllersContent, BagCheckoutTitle, CartContainer, CheckoutPriceContent, CheckoutPriceValue } from "./styled";
 
+
+
 export function Cart() {
+
+  const navigate = useNavigate()
+
+  const handlerConfirmCheckout = () => {
+    let path = `/delivery`
+    navigate(path)
+  }
+
   return (
     <CartContainer>
 
@@ -107,7 +118,7 @@ export function Cart() {
             </div>
           </CheckoutPriceContent>
 
-          <button><ButtonCheckout /></button>
+          <button onClick={handlerConfirmCheckout}><ButtonCheckout /></button>
 
         </BagCheckoutCard>
 
