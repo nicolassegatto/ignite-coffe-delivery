@@ -1,6 +1,5 @@
-import { Minus, Plus } from "phosphor-react";
-import { CartButton } from "../Buttons";
-import { CardButtonCart, CardContainer, CardDesign, CardInfo, ImageAtrributes, ItenSelectorAndCartButotn, ItensSelector, PriceItens, TitleDescription } from "./styled";
+import { CartButton, ItensQTDController } from "../Buttons";
+import { CardButtonCart, CardContainer, CardDesign, CardInfo, ImageAtrributes, ItenSelectorAndCartButotn, PriceItens, TitleDescription } from "./styled";
 
 interface CoffesResponseType {
   id: string;
@@ -26,11 +25,7 @@ export function Card({ id, name, description, price, attributes }: CoffesRespons
           <PriceItens>
             <p><label>R$</label>{price}</p>
             <ItenSelectorAndCartButotn>
-              <ItensSelector>
-                <button><Minus size={18} weight={"bold"} /></button>
-                <label>5</label>
-                <button><Plus size={18} weight={"bold"} /></button>
-              </ItensSelector>
+              <ItensQTDController/>
               <CardButtonCart>
                 <button><CartButton backgroundColor={'purple-800'} iconColor={'gray-0'} /></button>
               </CardButtonCart>

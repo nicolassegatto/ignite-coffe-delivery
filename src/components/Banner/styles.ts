@@ -4,7 +4,7 @@ import banner from "../../assets/Background.svg"
 export const BannerContainer = styled.div`
   background-image: url(${banner});
   background-size: cover;
-  background-position: center;
+  background-position: bottom;
   background-repeat: no-repeat;
   padding: 4rem 2rem;
   

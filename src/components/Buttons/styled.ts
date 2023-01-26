@@ -78,3 +78,60 @@ export const CoffeBallStyle = styled.div`
   justify-content: center;
   align-items: center;
 `
+
+export const ItensSelector = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: ${(props) => props.theme['gray-400']};
+  border-radius: 0.5rem;
+  height: 2.375rem;
+
+  button{
+    border: none;
+    background-color: transparent;
+    color: ${(props) => props.theme['purple-500']};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 0.25rem;
+    cursor: pointer;
+  }
+
+  label{
+    padding: 0 0.25rem;
+    color: ${(props) => props.theme['gray-900']};
+    font-size: 1rem;
+  }
+`
+
+export const RemoveButtonCart = styled.button`
+  display: flex;
+  gap: 0.5rem;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  color: ${(props) => props.theme["gray-700"]};
+  background-color: ${(props) => props.theme["gray-400"]};
+  border: none;
+  padding: 0 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+
+  &:hover{
+    opacity: 0.7;
+  }
+`
+
+export const ButtonCheckoutContent = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${(props) => props.theme["yellow-500"]};
+  border-radius: 0.5rem;
+  padding: 0.75rem 0.5rem;
+  color: ${(props) => props.theme["gray-0"]};
+  &:hover{
+    background-color: ${(props) => props.theme["yellow-700"]};
+  }
+`

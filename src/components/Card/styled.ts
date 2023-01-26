@@ -103,32 +103,6 @@ export const ItenSelectorAndCartButotn = styled.div`
   gap: 0.5rem;
 `
 
-export const ItensSelector = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: ${(props) => props.theme['gray-400']};
-  border-radius: 0.5rem;
-  height: 2.375rem;
-
-  button{
-    border: none;
-    background-color: transparent;
-    color: ${(props) => props.theme['purple-500']};
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 0.25rem;
-    cursor: pointer;
-  }
-
-  label{
-    padding: 0 0.25rem;
-    color: ${(props) => props.theme['gray-900']};
-    font-size: 1rem;
-  }
-`
-
 export const CardButtonCart = styled.div`
   button{
     border: none

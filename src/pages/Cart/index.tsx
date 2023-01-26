@@ -1,112 +1,115 @@
-import { AddressPaymentContainer, BagCheckoutContainer, CartContainer } from "./styled";
+import { Bank, CreditCard, CurrencyDollar, MapPinLine, Money } from "phosphor-react";
+import { ButtonCheckout, ItensQTDController, RemoveButton } from "../../components/Buttons";
+import { defaultTheme } from "../../styles/themes/default";
+import { AddressPaymentContainer, AddressPaymentDelivery, AddressPaymentDeliveryForm, AddressPaymentDeliveryTitle, AddressPaymentMethod, AddressPaymentMethodForm, AddressPaymentMethodTitle, AddressPaymentTitle, BagCheckoutCard, BagCheckoutContainer, BagCheckoutItem, BagCheckoutItemControllers, BagCheckoutItemControllersContent, BagCheckoutTitle, CartContainer, CheckoutPriceContent, CheckoutPriceValue } from "./styled";
 
 export function Cart() {
   return (
     <CartContainer>
-      
+
       <AddressPaymentContainer>
-        <div>
+        <AddressPaymentTitle>
           <h2>Complete seu pedido</h2>
-        </div>
+        </AddressPaymentTitle>
 
-        <div>
-          <div>
-            <h3>Endereço de Entrega</h3>
+        <AddressPaymentDelivery>
+          <AddressPaymentDeliveryTitle>
+            <h3><MapPinLine size={24} color={`${defaultTheme["yellow-700"]}`} />  Endereço de Entrega</h3>
             <p>Informe o endereço onde deseja receber seu pedido</p>
-          </div>
+          </AddressPaymentDeliveryTitle>
 
-          <form>
+          <AddressPaymentDeliveryForm>
             <div>
-              <input type="text" placeholder="CEP" required />
+              <input type="text" name="CEP" placeholder="CEP" required />
             </div>
             <div>
-              <input type="text" placeholder="Rua" required />
+              <input type="text" name="RUA" placeholder="Rua" required />
             </div>
             <div>
-              <input type="text" placeholder="Número" required />
-              <input type="text" placeholder="Complemento" required={false} />
+              <input type="text" name="NUMERO" placeholder="Número" required />
+              <input type="text" name="COMPLEMENTO" placeholder="Complemento" required={false} />
             </div>
             <div>
-              <input type="text" placeholder="Bairro" />
-              <input type="text" placeholder="Cidade" />
-              <input type="text" placeholder="UF" />
+              <input type="text" name="BAIRRO" placeholder="Bairro" />
+              <input type="text" name="CIDADE" placeholder="Cidade" />
+              <input type="text" name="ESTADO" placeholder="UF" />
             </div>
-          </form>
+          </AddressPaymentDeliveryForm>
 
-        </div>
+        </AddressPaymentDelivery>
 
-        <div>
+        <AddressPaymentMethod>
 
-          <div>
-            <h3>Pagamento</h3>
+          <AddressPaymentMethodTitle>
+            <h3><CurrencyDollar size={24} color={`${defaultTheme["purple-500"]}`} /> Pagamento</h3>
             <p>O pagamento é feito na entrega. Escolha a forma que deseja pagar</p>
-          </div>
+          </AddressPaymentMethodTitle>
 
-          <div>
-            <form>
-              <div>
-                <input type="radio" id="creditCard" />
-                <label htmlFor="creditCard">CARTÃO DE CRÉDITO</label>
-              </div>
-              <div>
-                <input type="radio" id="debitCard" />
-                <label htmlFor="debitCard">CARTÃO DE DÉBITO</label>
-              </div>
-              <div>
-                <input type="radio" id="money" />
-                <label htmlFor="money">DINHEIRO</label>
-              </div>
-            </form>
-          </div>
+          <AddressPaymentMethodForm>
+            
+              <input type="radio" name="paymentMethod" id="creditCard" value={'creditCard'}/>
+              <label htmlFor="creditCard">
+                <CreditCard size={16} color={`${defaultTheme["purple-500"]}`} />CARTÃO DE CRÉDITO
+              </label>
+            
 
-        </div>
+            
+              <input type="radio" name="paymentMethod" id="debitCard" value={'debitCard'}/>
+              <label htmlFor="debitCard">
+                <Bank size={16} color={`${defaultTheme["purple-500"]}`} />CARTÃO DE DÉBITO
+              </label>
+            
+
+            
+              <input type="radio" name="paymentMethod" id="money" value={'money'}/>
+              <label htmlFor="money">
+                <Money size={16} color={`${defaultTheme["purple-500"]}`} />DINHEIRO
+              </label>
+            
+          </AddressPaymentMethodForm>
+
+        </AddressPaymentMethod>
 
       </AddressPaymentContainer>
 
       <BagCheckoutContainer>
 
-        <div>
+        <BagCheckoutTitle>
           <h2>Cafés selecionados</h2>
-        </div>
+        </BagCheckoutTitle>
 
-        <div>
+        <BagCheckoutCard>
 
-          <div>
-            <img src="" alt="cafe" />
-            <div>
-              <p>MODELO CAFE</p>
-              <div>
-                <div>
-                  <button>-</button>
-                  <label>1</label>
-                  <button>+</button>
-                </div>
-                <button>Remover</button>
-              </div>
-            </div>
+          <BagCheckoutItem>
+            <img src="http://localhost:5173/img/products/1.svg" alt="cafe" />
+            <BagCheckoutItemControllers>
+              <p>Expresso Tradicional</p>
+              <BagCheckoutItemControllersContent>
+                <ItensQTDController />
+                <RemoveButton />
+              </BagCheckoutItemControllersContent>
+            </BagCheckoutItemControllers>
             <p>R$9,90</p>
-          </div>
+          </BagCheckoutItem>
 
-          <div>
+          <CheckoutPriceContent>
             <div>
               <p>Total de itens</p>
-              <p>R$29,70</p>
+              <CheckoutPriceValue>R$29,70</CheckoutPriceValue>
             </div>
             <div>
               <p>Entrega</p>
-              <p>R$3,50</p>
+              <CheckoutPriceValue>R$3,50</CheckoutPriceValue>
             </div>
             <div>
               <p>Total</p>
               <p>R$33,20</p>
             </div>
-          </div>
+          </CheckoutPriceContent>
 
-          <div>
-            <button>Confirmar Pedido</button>
-          </div>
+          <button><ButtonCheckout /></button>
 
-        </div>
+        </BagCheckoutCard>
 
       </BagCheckoutContainer>
 
