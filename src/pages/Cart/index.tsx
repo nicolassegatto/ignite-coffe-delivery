@@ -58,7 +58,7 @@ export function Cart() {
 
           <AddressPaymentMethodForm>
             
-              <input type="radio" name="paymentMethod" id="creditCard" value={'creditCard'}/>
+              <input type="radio" name="paymentMethod" id="creditCard" value={'creditCard'} />
               <label htmlFor="creditCard">
                 <CreditCard size={16} color={`${defaultTheme["purple-500"]}`} />CARTÃO DE CRÉDITO
               </label>
