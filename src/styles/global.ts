@@ -25,4 +25,16 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 1.125rem;
   }
 
+  &::-webkit-scrollbar-track {
+    background-color: ${(props) => props.theme['gray-200']};
+  }
+
+  &::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: ${(props) => props.theme['yellow-200']};
+    border-radius: 0.5rem;
+  }
 `
