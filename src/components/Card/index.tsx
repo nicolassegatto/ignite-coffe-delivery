@@ -1,3 +1,5 @@
+import { useContext, useState } from "react";
+import { DemandContext } from "../../context/DemandContext";
 import { CartButton, ItensQTDController } from "../Buttons";
 import { CardButtonCart, CardContainer, CardDesign, CardInfo, ImageAtrributes, ItenSelectorAndCartButotn, PriceItens, TitleDescription } from "./styled";
 
@@ -10,6 +12,23 @@ interface CoffesResponseType {
 }
 
 export function Card({ id, name, description, price, attributes }: CoffesResponseType) {
+
+  const { novoPedido } = useContext(DemandContext)
+  const [itensQtd, setItensQtd] = useState<number>(0)
+
+  const updateItensQtd = (data: number) => { setItensQtd(data) }
+
+  const newDemand = () => {
+    itensQtd > 0 && novoPedido({
+      id: id,
+      name: name,
+      price: price,
+      quantity: itensQtd,
+    });
+    
+    setItensQtd(0);
+  }
+
   return (
     <CardContainer>
       <CardDesign>
@@ -23,11 +42,11 @@ export function Card({ id, name, description, price, attributes }: CoffesRespons
             <p>{description}</p>
           </TitleDescription>
           <PriceItens>
-            <p><label>R$</label>{price}</p>
+            <p><label>R$</label>{price.toFixed(2)}</p>
             <ItenSelectorAndCartButotn>
-              <ItensQTDController/>
+              <ItensQTDController updateItensQtd={updateItensQtd} qtd={itensQtd} />
               <CardButtonCart>
-                <button><CartButton backgroundColor={'purple-800'} iconColor={'gray-0'} /></button>
+                <button onClick={newDemand}><CartButton backgroundColor={'purple-800'} iconColor={'gray-0'} /></button>
               </CardButtonCart>
             </ItenSelectorAndCartButotn>
           </PriceItens>

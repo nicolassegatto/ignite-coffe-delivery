@@ -5,63 +5,63 @@
       "name" : "Expresso Tradicional",
       "description": "O tradicional café feito com água quente e grãos moídos",
       "price" : 9.90,
-      "attributes" : ["Tradicional"]
+      "attributes" : ["tradicional"]
     },
     {
       "id": "2",
       "name" : "Expresso Americano",
       "description": "Expresso diluído, menos intenso que o tradicional",
       "price" : 10.90,
-      "attributes" : ["Tradicional"]
+      "attributes" : ["tradicional"]
     },
     {
       "id": "3",
       "name" : "Expresso Cremoso",
       "description": "Café expresso tradicional com espuma cremosa",
       "price" : 11.90,
-      "attributes" : ["Tradicional"]
+      "attributes" : ["tradicional"]
     },
     {
       "id": "4",
       "name" : "Expresso Gelado",
       "description": "Bebida preparada com café expresso e cubos de gelo",
       "price" : 8.90,
-      "attributes" : ["Tradicional", "Gelado"]
+      "attributes" : ["tradicional", "gelado"]
     },
     {
       "id": "5",
       "name" : "Café com Leite",
       "description": "Meio a meio de expresso tradicional com leite vaporizado",
       "price" : 12.90,
-      "attributes" : ["Tradicional", "com leite"]
+      "attributes" : ["tradicional", "com leite"]
     },
     {
       "id": "6",
       "name" : "Latte",
       "description": "Uma dose de café expresso com o dobro de leite e espuma cremosa",
       "price" : 13.50,
-      "attributes" : ["Tradicional", "com leite"]
+      "attributes" : ["tradicional", "com leite"]
     },
     {
       "id": "7",
       "name" : "Capuccino",
       "description": "Bebida com canela feita de doses iguais de café, leite e espuma",
       "price" : 14.00,
-      "attributes" : ["Tradicional", "com leite"]
+      "attributes" : ["tradicional", "com leite"]
     },
     {
       "id": "8",
       "name" : "Macchiato",
       "description": "Café expresso misturado com um pouco de leite quente e espuma",
       "price" : 11.90,
-      "attributes" : ["Tradicional", "com leite"]
+      "attributes" : ["tradicional", "com leite"]
     },
     {
       "id": "9",
       "name" : "Mocaccino",
       "description": "Café expresso com calda de chocolate, pouco leite e espuma",
       "price" : 19.80,
-      "attributes" : ["Tradicional", "com leite"]
+      "attributes" : ["tradicional", "com leite"]
     },
     {
       "id": "10",

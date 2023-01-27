@@ -243,3 +243,23 @@ export const CheckoutPriceContent = styled.div`
 export const CheckoutPriceValue = styled.p`
   font-size: 1rem;
 `
+
+export const EmpityCart = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  span{
+    :nth-child(1){
+      color: ${(props) => props.theme["gray-400"]};
+    }
+    :nth-child(2){
+      font-family: 'Baloo 2' ;
+      font-size: 3rem;
+      color: ${(props) => props.theme["gray-600"]};
+    }
+    :nth-child(3){
+      font-size: 1.5rem;
+      color: ${(props) => props.theme["gray-400"]};
+    }
+  }
+`

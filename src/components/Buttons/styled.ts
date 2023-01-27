@@ -124,11 +124,14 @@ export const ItensSelector = styled.div`
     justify-content: center;
     padding: 0 0.25rem;
     cursor: pointer;
+    &:hover{
+      color: ${(props) => props.theme['purple-800']};
+    }
   }
 
   label{
     padding: 0 0.25rem;
-    color: ${(props) => props.theme['gray-900']};
+    color: ${(props) => props.theme['gray-600']};
     font-size: 1rem;
   }
 `

@@ -1,14 +1,16 @@
 import { MapPin } from "phosphor-react";
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { DemandContext } from "../../context/DemandContext";
 import { CartButton } from "../Buttons";
 import { Logo } from "../Logo";
 import { Address, ButtonsContent, CartContent, HeaderContainer, HeaderContent } from "./styled";
 
-interface cartItensType {
-  itens: number | undefined
-}
 
-export function Header({ itens }: cartItensType) {
+export function Header() {
+
+  const {pedidos} = useContext(DemandContext)
+ 
   return (
     <HeaderContainer>
       <HeaderContent>
@@ -29,7 +31,7 @@ export function Header({ itens }: cartItensType) {
             <NavLink to='/cart' title='checkout'>
               <CartButton backgroundColor={'yellow-200'} iconColor={'yellow-700'} />
             </NavLink>
-            {itens && <label>{itens}</label>}
+            {pedidos.length > 0 && <label>{pedidos.length}</label>}
           </CartContent>
         </ButtonsContent>
 

@@ -7,6 +7,11 @@ interface CartButtonColorType {
   iconColor: keyof typeof defaultTheme
 }
 
+interface ItensQtdType {
+  updateItensQtd: (data:number) => void
+  qtd: number
+}
+
 export function CartButton({ backgroundColor, iconColor }: CartButtonColorType) {
   return (
     <CartButtonStyle backColor={backgroundColor} iconColor={iconColor}>
@@ -63,19 +68,34 @@ export function MoneyBall() {
   )
 }
 
-export function ItensQTDController() {
+export function ItensQTDController( {updateItensQtd, qtd}: ItensQtdType ) {
+
+  function handlerRemoveQtd () {
+    qtd > 0 && updateItensQtd(qtd-1)
+  }
+
+  function handlerAddQtd () {
+    updateItensQtd(qtd+1)
+  }
+
   return (
     <ItensSelector>
-      <button><Minus size={18} weight={"bold"} /></button>
-      <label>5</label>
-      <button><Plus size={18} weight={"bold"} /></button>
+      <button onClick={handlerRemoveQtd}><Minus size={18} weight={"bold"} /></button>
+      <label>{qtd}</label>
+      <button onClick={handlerAddQtd}><Plus size={18} weight={"bold"} /></button>
     </ItensSelector>
   )
 }
 
-export function RemoveButton() {
+
+interface RemoveButtonType {
+  handlerRemoveItem: () => void
+}
+
+export function RemoveButton({handlerRemoveItem} : RemoveButtonType) {
+
   return (
-    <RemoveButtonCart>
+    <RemoveButtonCart onClick={handlerRemoveItem}>
       <Trash size={16} color={`${defaultTheme["purple-500"]}`}/> REMOVER
     </RemoveButtonCart>
   )
