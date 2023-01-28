@@ -63,3 +63,12 @@ export const DeliveryDetailsAtributtes = styled.div`
     }
   }
 `
+
+export const NotFound = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10rem;
+  font-family: 'Baloo 2';
+  color: ${(props) => props.theme["gray-600"]}
+`

@@ -1,89 +1,77 @@
 import { Bank, CreditCard, CurrencyDollar, MapPinLine, Money, Storefront } from "phosphor-react";
-import { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { useForm } from "react-hook-form";
 import { ButtonCheckout, ItensQTDController, RemoveButton } from "../../components/Buttons";
 import { DemandContext } from "../../context/DemandContext";
 import { defaultTheme } from "../../styles/themes/default";
-import { AddressPaymentContainer, AddressPaymentDelivery, AddressPaymentDeliveryForm, AddressPaymentDeliveryTitle, AddressPaymentMethod, AddressPaymentMethodForm, AddressPaymentMethodTitle, AddressPaymentTitle, BagCheckoutCard, BagCheckoutContainer, BagCheckoutItem, BagCheckoutItemControllers, BagCheckoutItemControllersContent, BagCheckoutTitle, CartContainer, CheckoutPriceContent, CheckoutPriceValue, EmpityCart } from "./styled";
+import { AddressDelivery, AddressDeliveryBox, AddressPaymentContainer, AddressPaymentDeliveryForm, AddressPaymentDeliveryTitle, AddressPaymentMethod, AddressPaymentMethodDiv, AddressPaymentMethodTitle, AddressPaymentTitle, BagCheckoutCard, BagCheckoutContainer, BagCheckoutItem, BagCheckoutItemControllers, BagCheckoutItemControllersContent, BagCheckoutItems, BagCheckoutTitle, CartContainer, CheckoutPriceContent, CheckoutPriceValue, EmpityCart } from "./styled";
 
 export function Cart() {
 
-  const navigate = useNavigate()
+  const {register, handleSubmit} = useForm();
 
-  const handlerConfirmCheckout = () => {
-    let path = `/delivery`
-    navigate(path)
-  }
-
-  const { pedidos, totalPrice, deliveryPrice, removePedido, updateItemQuantity } = useContext(DemandContext)
+  const {pedidos, totalPrice, deliveryPrice, removePedido, updateItemQuantity, insertAddress} = useContext(DemandContext)
 
   if (pedidos.length > 0) {
     return (
       <CartContainer>
-
         <AddressPaymentContainer>
           <AddressPaymentTitle>
             <h2>Complete seu pedido</h2>
           </AddressPaymentTitle>
 
-          <AddressPaymentDelivery>
-            <AddressPaymentDeliveryTitle>
-              <h3><MapPinLine size={24} color={`${defaultTheme["yellow-700"]}`} />  Endereço de Entrega</h3>
-              <p>Informe o endereço onde deseja receber seu pedido</p>
-            </AddressPaymentDeliveryTitle>
+          <AddressPaymentDeliveryForm id="delivery" onSubmit={handleSubmit((data) => insertAddress(data))}>
+            <AddressDeliveryBox>
+              <AddressPaymentDeliveryTitle>
+                <h3><MapPinLine size={24} color={`${defaultTheme["yellow-700"]}`} />  Endereço de Entrega</h3>
+                <p>Informe o endereço onde deseja receber seu pedido</p>
+              </AddressPaymentDeliveryTitle>
 
-            <AddressPaymentDeliveryForm>
-              <div>
-                <input type="text" name="CEP" placeholder="CEP" required />
-              </div>
-              <div>
-                <input type="text" name="RUA" placeholder="Rua" required />
-              </div>
-              <div>
-                <input type="text" name="NUMERO" placeholder="Número" required />
-                <input type="text" name="COMPLEMENTO" placeholder="Complemento" required={false} />
-              </div>
-              <div>
-                <input type="text" name="BAIRRO" placeholder="Bairro" />
-                <input type="text" name="CIDADE" placeholder="Cidade" />
-                <input type="text" name="ESTADO" placeholder="UF" />
-              </div>
-            </AddressPaymentDeliveryForm>
+              <AddressDelivery>
+                <div>
+                  <input placeholder="CEP" {...register("CEP",{required:true})} />
+                </div>
+                <div>
+                  <input placeholder="Rua" {...register("RUA",{required:true})} />
+                </div>
+                <div>
+                  <input {...register("NUMERO",{required:true})} placeholder="Número"  />
+                  <input {...register("COMPLEMENTO")} placeholder="Complemento"/>
+                </div>
+                <div>
+                  <input {...register("BAIRRO",{required:true})}  placeholder="Bairro" />
+                  <input {...register("CIDADE",{required:true})}  placeholder="Cidade" />
+                  <input {...register("ESTADO",{required:true})}  placeholder="UF" />
+                </div>
+              </AddressDelivery>
+            </AddressDeliveryBox>
 
-          </AddressPaymentDelivery>
+            <AddressPaymentMethod>
+              <AddressPaymentMethodTitle>
+                <h3><CurrencyDollar size={24} color={`${defaultTheme["purple-500"]}`} /> Pagamento</h3>
+                <p>O pagamento é feito na entrega. Escolha a forma que deseja pagar</p>
+              </AddressPaymentMethodTitle>
 
-          <AddressPaymentMethod>
+              <AddressPaymentMethodDiv>
 
-            <AddressPaymentMethodTitle>
-              <h3><CurrencyDollar size={24} color={`${defaultTheme["purple-500"]}`} /> Pagamento</h3>
-              <p>O pagamento é feito na entrega. Escolha a forma que deseja pagar</p>
-            </AddressPaymentMethodTitle>
+                <input type="radio" {...register("PAGAMENTO",{required:true})} id="creditCard" value={'Cartão de crédito'}  />
+                <label htmlFor="creditCard">
+                  <CreditCard size={16} color={`${defaultTheme["purple-500"]}`} />CARTÃO DE CRÉDITO
+                </label>
 
-            <AddressPaymentMethodForm>
+                <input type="radio" {...register("PAGAMENTO",{required:true})} id="debitCard" value={'Cartão de débito'}  />
+                <label htmlFor="debitCard">
+                  <Bank size={16} color={`${defaultTheme["purple-500"]}`} />CARTÃO DE DÉBITO
+                </label>
 
-              <input type="radio" name="paymentMethod" id="creditCard" value={'creditCard'} />
-              <label htmlFor="creditCard">
-                <CreditCard size={16} color={`${defaultTheme["purple-500"]}`} />CARTÃO DE CRÉDITO
-              </label>
+                <input type="radio" {...register("PAGAMENTO",{required:true})} id="money" value={'Dinheiro'}  />
+                <label htmlFor="money">
+                  <Money size={16} color={`${defaultTheme["purple-500"]}`} />DINHEIRO
+                </label>
 
-
-
-              <input type="radio" name="paymentMethod" id="debitCard" value={'debitCard'} />
-              <label htmlFor="debitCard">
-                <Bank size={16} color={`${defaultTheme["purple-500"]}`} />CARTÃO DE DÉBITO
-              </label>
-
-
-
-              <input type="radio" name="paymentMethod" id="money" value={'money'} />
-              <label htmlFor="money">
-                <Money size={16} color={`${defaultTheme["purple-500"]}`} />DINHEIRO
-              </label>
-
-            </AddressPaymentMethodForm>
-
-          </AddressPaymentMethod>
-
+              </AddressPaymentMethodDiv>
+            </AddressPaymentMethod>
+          </AddressPaymentDeliveryForm>
         </AddressPaymentContainer>
 
         <BagCheckoutContainer>
@@ -94,31 +82,32 @@ export function Cart() {
 
           <BagCheckoutCard>
 
-            {pedidos.map(pedido => {
+            <BagCheckoutItems>
+              {pedidos.map(pedido => {
 
-              const updateItensQtd = (qtd: number) => {
-                updateItemQuantity(pedido.id, qtd)
-              }
+                const updateItensQtd = (qtd: number) => {
+                  updateItemQuantity(pedido.id, qtd)
+                }
 
-              function handlerRemoveItem() {
-                removePedido(pedido.id)
-              }
+                function handlerRemoveItem() {
+                  removePedido(pedido.id)
+                }
 
-              return (
-                <BagCheckoutItem key={pedido.id}>
-                  <img src={`http://localhost:5173/img/products/${pedido.id}.svg`} alt="cafe" />
-                  <BagCheckoutItemControllers>
-                    <p>{pedido.name}</p>
-                    <BagCheckoutItemControllersContent>
-                      <ItensQTDController qtd={pedido.quantity} updateItensQtd={updateItensQtd}  />
-                      <RemoveButton handlerRemoveItem={handlerRemoveItem}/>
-                    </BagCheckoutItemControllersContent>
-                  </BagCheckoutItemControllers>
-                  <p>{pedido.price.toFixed(2)} <i>unit.</i></p>
-                </BagCheckoutItem>
-              )
-            })}
-
+                return (
+                  <BagCheckoutItem key={pedido.id}>
+                    <img src={`http://localhost:5173/img/products/${pedido.id}.svg`} alt="cafe" />
+                    <BagCheckoutItemControllers>
+                      <p>{pedido.name}</p>
+                      <BagCheckoutItemControllersContent>
+                        <ItensQTDController qtd={pedido.quantity} updateItensQtd={updateItensQtd} />
+                        <RemoveButton handlerRemoveItem={handlerRemoveItem} />
+                      </BagCheckoutItemControllersContent>
+                    </BagCheckoutItemControllers>
+                    <p>{pedido.price.toFixed(2)} <i>unit.</i></p>
+                  </BagCheckoutItem>
+                )
+              })}
+            </BagCheckoutItems>
 
             <CheckoutPriceContent>
               <div>
@@ -135,12 +124,11 @@ export function Cart() {
               </div>
             </CheckoutPriceContent>
 
-            <button onClick={handlerConfirmCheckout}><ButtonCheckout /></button>
+            <button type="submit" form="delivery"><ButtonCheckout /></button>
 
           </BagCheckoutCard>
 
         </BagCheckoutContainer>
-
       </CartContainer>
     )
   } else {
@@ -154,7 +142,4 @@ export function Cart() {
       </CartContainer>
     )
   }
-
-
-
 }

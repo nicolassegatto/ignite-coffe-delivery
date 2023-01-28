@@ -20,15 +20,6 @@ export const AddressPaymentTitle = styled.div`
     font-size: 1.125rem;
   }
 `
-export const AddressPaymentDelivery = styled.div`
-  background-color: ${(props) => props.theme['gray-200']};
-  border-radius: 0.5rem;
-  padding: 2.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 2.5rem;
-`
 export const AddressPaymentDeliveryTitle = styled.div`
   display: flex;
   flex-direction: column;
@@ -50,8 +41,21 @@ export const AddressPaymentDeliveryForm = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 2rem;
 
+`
+export const AddressDeliveryBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  background-color: ${(props) => props.theme['gray-200']};
+  border-radius: 0.5rem;
+  padding: 2.5rem;
+  gap: 2rem;
+`
+export const AddressDelivery = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   div{
     display: flex;
     gap: 1rem;
@@ -131,7 +135,7 @@ export const AddressPaymentMethodTitle = styled.div`
     color: ${(props) => props.theme["gray-700"]};
   }
 `
-export const AddressPaymentMethodForm = styled.form`
+export const AddressPaymentMethodDiv = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -176,7 +180,11 @@ export const BagCheckoutTitle = styled.div`
   }
 `
 export const BagCheckoutCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   width: 28rem;
+  max-height: 72vh;
   background-color: ${(props) => props.theme['gray-200']};
   border-radius: 0.25rem 2.75rem;
   padding: 2.5rem;
@@ -185,6 +193,9 @@ export const BagCheckoutCard = styled.div`
     cursor: pointer;
     width: 100%;
   }
+`
+export const BagCheckoutItems = styled.div`
+  overflow-y: scroll;
 `
 export const BagCheckoutItem = styled.div`
   display: flex;
@@ -202,6 +213,10 @@ export const BagCheckoutItem = styled.div`
     line-height: 130%;
     font-size: 1rem;
     color: ${(props) => props.theme["gray-700"]};
+    i{
+      font-size: 0.7rem;
+      font-weight: 400;
+    }
   }
 `
 export const BagCheckoutItemControllers = styled.div`
@@ -243,7 +258,6 @@ export const CheckoutPriceContent = styled.div`
 export const CheckoutPriceValue = styled.p`
   font-size: 1rem;
 `
-
 export const EmpityCart = styled.div`
   display: flex;
   flex-direction: column;
